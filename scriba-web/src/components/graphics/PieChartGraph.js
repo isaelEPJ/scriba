@@ -1,16 +1,16 @@
-import { CenterFocusStrong, CenterFocusWeak } from "@material-ui/icons";
-import React, { PureComponent } from "react";
-import { PieChart, Pie, Sector, Cell, BarChart, Tooltip } from "recharts";
-import { colors } from "../../assets/colors";
+import { CenterFocusStrong, CenterFocusWeak } from '@material-ui/icons';
+import React, { PureComponent } from 'react';
+import { PieChart, Pie, Sector, Cell, BarChart, Tooltip } from 'recharts';
+import { colors } from '../../assets/colors';
 
 const dataUsers = [
-    { name: "Isael", uv: 20, pv: 20, amt: 20, value: 20 },
-    { name: "Rodrigo", uv: 21, pv: 21, amt: 21, value: 21 },
-    { name: "Bruno", uv: 18, pv: 18, amt: 18, value: 18 },
-    { name: "Joao", uv: 6, pv: 6, amt: 6, value: 6 },
+    { name: 'Isael', uv: 20, pv: 20, amt: 20, value: 20 },
+    { name: 'Rodrigo', uv: 21, pv: 21, amt: 21, value: 21 },
+    { name: 'Bruno', uv: 18, pv: 18, amt: 18, value: 18 },
+    { name: 'Joao', uv: 6, pv: 6, amt: 6, value: 6 },
 ];
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
@@ -31,7 +31,7 @@ const renderCustomizedLabel = ({
             x={x}
             y={y}
             fill="white"
-            textAnchor={x > cx ? "start" : "end"}
+            textAnchor={x > cx ? 'start' : 'end'}
             dominantBaseline="central"
         >
             {`${(percent * 100).toFixed(0)}%`}
@@ -42,11 +42,7 @@ const renderCustomizedLabel = ({
 const PieChartGraph = () => {
     return (
         <>
-            <PieChart
-                width={500}
-                height={400}
-                style={{ right: 0, position: "absolute" }}
-            >
+            <PieChart width={500} height={400} style={{ right: 0 }}>
                 <Pie
                     data={dataUsers}
                     alignmentBaseline={CenterFocusStrong}

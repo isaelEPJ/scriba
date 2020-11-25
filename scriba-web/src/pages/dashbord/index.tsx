@@ -5,12 +5,10 @@ import { Container } from "./styles";
 
 const Dashboard: React.FC = () => {
     return (
-        <>
             <Container>
                 <Appointments />
                 <Tasks />
             </Container>
-        </>
     );
 };
 export default Dashboard;

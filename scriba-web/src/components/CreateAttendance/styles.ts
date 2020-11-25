@@ -1,13 +1,12 @@
-import { shade } from "polished";
-import styled from "styled-components";
-import { colors } from "../../assets/colors";
+import { shade } from 'polished';
+import styled from 'styled-components';
+import { colors } from '../../assets/colors';
 
-export const NewAttendance = styled.div`
+export const NewAttendance = styled.form`
     background-color: ${colors.white};
-    padding: 70px;
     border-radius: 10px;
-    position: absolute; /* posição absoluta ao elemento pai, neste caso o BODY */
-    border-radius: 8px;
+    height: 600px;
+    position: fixed; /* posição absoluta ao elemento pai, neste caso o BODY */
     margin-top: 15px;
     opacity: 0.9;
     border: 2px solid ${colors.blue2};
@@ -20,14 +19,21 @@ export const NewAttendance = styled.div`
             margin: 4px;
         }
     }
+    .inputCli {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
     .formAttCli {
-        display: inline-flexbox;
+        height: 80px;
+        display: grid;
+        grid-template-columns: auto auto;
     }
     .inputFormCli {
+        display: inline-block;
     }
     .InputContent {
-        width: 300px;
-        height: 100px;
+        width: 18rem;
+        height: 18rem;
     }
 `;
 export const Form = styled.form`

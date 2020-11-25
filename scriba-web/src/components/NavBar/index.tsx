@@ -1,25 +1,30 @@
-import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Badge from "@material-ui/core/Badge";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-import MoreIcon from "@material-ui/icons/MoreVert";
-import useStyles from "./styles";
-import logo from "../../assets/images/scriba/logoInverted.png";
+import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import MailIcon from '@material-ui/icons/Mail';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import MoreIcon from '@material-ui/icons/MoreVert';
+import useStyles from './styles';
+import logo from '../../assets/images/scriba/logoInverted.png';
 import {
     ProfileText,
     MyaccountText,
     NotificationText,
     MessagesText,
     SignOutText,
-} from "../../assets/strings";
-import { Link } from "react-router-dom";
+    HomePageName,
+    ReportName,
+    GraphicsName,
+    AttendanceSName,
+    ClientText,
+} from '../../assets/strings';
+import { Link } from 'react-router-dom';
 
 export default function NavBar() {
     const classes = useStyles();
@@ -52,35 +57,35 @@ export default function NavBar() {
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
-    const menuId = "primary-search-account-menu";
+    const menuId = 'primary-search-account-menu';
     const renderMenu = (
         <Menu
             anchorEl={anchorEl}
-            anchorOrigin={{ vertical: "top", horizontal: "right" }}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
             id={menuId}
             keepMounted
-            transformOrigin={{ vertical: "top", horizontal: "right" }}
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
             <MenuItem onClick={handleMenuClose}>{ProfileText}</MenuItem>
             <MenuItem onClick={handleMenuClose}>{MyaccountText}</MenuItem>
             <MenuItem onClick={handleMenuClose}>
-                <Link style={{ textDecoration: "none", color: "red" }} to="/">
+                <Link style={{ textDecoration: 'none', color: 'red' }} to="/">
                     {SignOutText}
                 </Link>
             </MenuItem>
         </Menu>
     );
 
-    const mobileMenuId = "primary-search-account-menu-mobile";
+    const mobileMenuId = 'primary-search-account-menu-mobile';
     const renderMobileMenu = (
         <Menu
             anchorEl={mobileMoreAnchorEl}
-            anchorOrigin={{ vertical: "top", horizontal: "right" }}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
             id={mobileMenuId}
             keepMounted
-            transformOrigin={{ vertical: "top", horizontal: "right" }}
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
@@ -142,15 +147,19 @@ export default function NavBar() {
                         />
                     </IconButton>
                     <Link to="/dashboard" className={classes.navLinks}>
-                        Home
+                        {HomePageName}
                     </Link>
-
+                    <Link to="/atendimentos" className={classes.navLinks}>
+                        {AttendanceSName}
+                    </Link>
+                    <Link to="/clientes" className={classes.navLinks}>
+                        {ClientText}
+                    </Link>
                     <Link to="/relatorios" className={classes.navLinks}>
-                        Relatórios
+                        {ReportName}
                     </Link>
-
                     <Link to="/graficos" className={classes.navLinks}>
-                        Gráficos
+                        {GraphicsName}
                     </Link>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
