@@ -1,6 +1,6 @@
-import "reflect-metadata";
-import express from "express";
-import Routes from "./routes";
+import 'reflect-metadata';
+import express from 'express';
+import Routes from './routes';
 
 const app = express();
 app.use(express.json());
@@ -8,5 +8,5 @@ app.use(express.json());
 app.use(Routes);
 
 app.listen(3000, () => {
-  console.log("server On");
+    console.log('server On');
 });

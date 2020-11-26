@@ -1,17 +1,17 @@
-import React from "react";
-import Input from "../../components/input";
-import Button from "../../components/button";
-import logo from "../../assets/images/scriba/logo.png";
-import { Background, Container, Content } from "./styles";
+import React from 'react';
+import Input from '../../components/input';
+import Button from '../../components/button';
+import logo from '../../assets/images/scriba/logo.png';
+import { Background, Container, Content } from './styles';
 import {
     CreateAccountText,
     forgotPasswordText,
     SignInButtonText,
     SignInText,
-} from "../../assets/strings";
-import { Link } from "react-router-dom";
-import { FiLock, FiLogIn, FiMail } from "react-icons/fi";
-import { Form } from "@unform/web";
+} from '../../assets/strings';
+import { Link } from 'react-router-dom';
+import { FiLock, FiLogIn, FiMail } from 'react-icons/fi';
+import { Form } from '@unform/web';
 
 const SignIn: React.FC = () => {
     function handleSubmit(data: object) {

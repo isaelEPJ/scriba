@@ -33,7 +33,7 @@ export const Container = styled.div<ContainerProps>`
     //::-webkit-scrollbar-track
     //::-webkit-scrollbar-track-piece
     ::-webkit-scrollbar-thumb {
-        width: 6px;
+        width: 10px;
         background: ${colors.grey2};
     }
     //::-webkit-scrollbar-corner
@@ -88,7 +88,7 @@ export const Container = styled.div<ContainerProps>`
         display: flex;
         align-content: center;
         justify-content: center;
-        margin: 2rem 0;
+        margin: 2rem 0.5rem;
         flex-direction: column;
     }
     .paper {
@@ -124,6 +124,11 @@ export const Form = styled.form`
     margin: 5px 0 0 7px;
     align-content: center;
     justify-content: center;
+    > svg {
+        cursor: pointer;
+        margin-right: 0.7rem;
+        color: ${colors.blue2};
+    }
     input {
         flex: 1;
         height: 2.5rem;

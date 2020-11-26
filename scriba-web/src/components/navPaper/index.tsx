@@ -4,6 +4,8 @@ import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { FiEdit, FiTrash } from 'react-icons/fi';
 import { colors } from '../../assets/colors';
 import {
+    AlteredDataText,
+    CreatedDataText,
     DetailsButtonText,
     FinalizeButtonText,
     ForwardButtonText,
@@ -48,7 +50,9 @@ const NavPaper: React.FC = () => {
                 18/11/2020
                 <AiOutlineExclamationCircle
                     size={11}
+                    title={CreatedDataText}
                     style={{
+                        cursor: 'help',
                         alignSelf: 'center',
                         display: 'flex',
                         color: colors.redError,
@@ -65,8 +69,9 @@ const NavPaper: React.FC = () => {
                 30/11/2020
                 <AiOutlineExclamationCircle
                     size={11}
-                    title="Utima data de modificaçao"
+                    title={AlteredDataText}
                     style={{
+                        cursor: 'help',
                         alignSelf: 'center',
                         display: 'flex',
                         color: colors.redError,

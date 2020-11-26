@@ -1,8 +1,9 @@
 import { Avatar, Grid, Paper, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
-import { FiEdit, FiSearch, FiTrash } from 'react-icons/fi';
+import { FiSearch } from 'react-icons/fi';
+import { BsFilterRight } from 'react-icons/bs';
 import { VscAdd } from 'react-icons/vsc';
-import { AiOutlineExclamationCircle, AiOutlineLine } from 'react-icons/ai';
+import { AiOutlineLine } from 'react-icons/ai';
 import { Container, Form } from './styles';
 import { colors } from '../../assets/colors';
 import CreateAttendance from '../CreateAttendance';
@@ -11,27 +12,35 @@ import { AttendanceText } from '../../assets/strings';
 
 const Appointments: React.FC = () => {
     const [isAddSelected, setIsAddSelected] = useState(false);
+    const [StateForm, setStateForm] = useState(true);
+
     function handleClickNewAtt() {
         if (isAddSelected === false) {
             setIsAddSelected(true);
+            // setStateForm(false);
         } else {
             setIsAddSelected(false);
+            setStateForm(true);
         }
     }
+
     return (
         <>
             <Container isAddSelected={isAddSelected}>
                 <p>Isael</p>
                 <h2>{AttendanceText}</h2>
-                <Form>
-                    <input placeholder="pesquisar" />
-                    <button type="button">
-                        <FiSearch size={20} />
-                    </button>
-                    <button type="button" onClick={handleClickNewAtt}>
-                        <VscAdd size={20} />
-                    </button>
-                </Form>
+                {StateForm && (
+                    <Form>
+                        <BsFilterRight size={40} />
+                        <input placeholder="pesquisar" />
+                        <button type="button">
+                            <FiSearch size={20} />
+                        </button>
+                        <button type="button" onClick={handleClickNewAtt}>
+                            <VscAdd size={20} />
+                        </button>
+                    </Form>
+                )}
                 {isAddSelected && <CreateAttendance />}
                 <div className="main">
                     <Paper className="paper">

@@ -29,6 +29,8 @@ export const AttendanceText = 'Atendimentos';
 export const SearchText = 'Pesquisar';
 export const MessagesText = 'Mensagens';
 export const NotificationText = 'Notificaçoes';
+export const CreatedDataText = 'Data de Criaçao de atendimento';
+export const AlteredDataText = 'Ultima alteraçao de Atendimento';
 
 //required
 export const NameRequiredText = 'Nome é obrigatório';
