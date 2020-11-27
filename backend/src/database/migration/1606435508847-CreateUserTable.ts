@@ -40,10 +40,12 @@ export class CreateUserTable1606435508847 implements MigrationInterface {
                     {
                         name: 'avatar',
                         type: 'varchar',
+                        isNullable: true,
                     },
                     {
                         name: 'notification',
                         type: 'varchar',
+                        isNullable: true,
                     },
                     {
                         name: 'created_at',

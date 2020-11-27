@@ -110,7 +110,7 @@ export const Container = styled.div<ContainerProps>`
             margin-top: 2px;
             ::-webkit-scrollbar {
                 width: 6px;
-                background: ${colors.grey3};
+                background: ${colors.GreyBackground};
             }
         }
         .scrollarea {

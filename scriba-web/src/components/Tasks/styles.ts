@@ -74,7 +74,7 @@ export const Container = styled.div`
         display: flex;
         align-content: center;
         justify-content: center;
-        margin: 1.5rem 0;
+        margin: 1.5rem 0.2rem;
         flex-direction: column;
     }
     .contentGrid {
@@ -84,8 +84,8 @@ export const Container = styled.div`
             margin-bottom: 4px;
             margin-top: 2px;
             ::-webkit-scrollbar {
-                width: 6px;
-                background: ${colors.grey3};
+                width: 1px;
+                background: ${colors.GreyBackground};
             }
         }
         .scrollarea {
