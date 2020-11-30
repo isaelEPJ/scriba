@@ -1,20 +1,7 @@
-import {
-    Column,
-    Entity,
-    JoinColumn,
-    OneToMany,
-    PrimaryGeneratedColumn,
-} from 'typeorm';
-import Appointment from './Appointment';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('users')
 class User {
-    @OneToMany(() => Appointment, (appointment) => appointment.user_open)
-    @JoinColumn({ name: 'id' })
-    id_appointment_open: Appointment;
-    @OneToMany(() => Appointment, (appointment) => appointment.user_close)
-    @JoinColumn({ name: 'id' })
-    id_appointment_close: Appointment;
     @PrimaryGeneratedColumn('uuid')
     id: string;
     @Column()

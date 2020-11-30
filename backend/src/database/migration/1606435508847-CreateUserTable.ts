@@ -31,7 +31,6 @@ export class CreateUserTable1606435508847 implements MigrationInterface {
                     {
                         name: 'admin',
                         type: 'boolean',
-                        isNullable: false,
                     },
                     {
                         name: 'type',
@@ -49,12 +48,12 @@ export class CreateUserTable1606435508847 implements MigrationInterface {
                     },
                     {
                         name: 'created_at',
-                        type: 'timestamp',
+                        type: 'Timestamp',
                         default: 'now()',
                     },
                     {
-                        name: 'updated_at',
-                        type: 'timestamp',
+                        name: 'altered_at',
+                        type: 'Timestamp',
                         default: 'now()',
                     },
                 ],

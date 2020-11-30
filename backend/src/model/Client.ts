@@ -1,22 +1,9 @@
-import {
-    Column,
-    Entity,
-    JoinColumn,
-    OneToMany,
-    OneToOne,
-    PrimaryGeneratedColumn,
-    Timestamp,
-} from 'typeorm';
-import Appointment from './Appointment';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 Entity('client');
 class Client {
     @PrimaryGeneratedColumn('uuid')
     id: String;
-    @OneToOne(() => Appointment, (appointment) => appointment.client)
-    @JoinColumn({ name: 'id' })
-    id_client: string;
-
     @Column()
     name: string;
     @Column()

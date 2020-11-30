@@ -19,7 +19,7 @@ class CreateUserService {
         type,
         avatar,
         notification,
-    }: Require): Promise<void> {
+    }: Require): Promise<User> {
         const userRepository = getRepository(User);
         const checkEmail = userRepository.findOne({
             where: { email },
@@ -31,18 +31,18 @@ class CreateUserService {
             throw new Error('Email ja utilizado no cadastro');
         } else if (checkName) {
             throw new Error('Nome ja utilizado');
-        } else {
-            const user = userRepository.create({
-                name,
-                email,
-                password,
-                admin,
-                type,
-                avatar,
-                notification,
-            });
-            await userRepository.save(user);
         }
+        const user = userRepository.create({
+            name,
+            email,
+            password,
+            admin,
+            type,
+            avatar,
+            notification,
+        });
+        await userRepository.save(user);
+        return user;
     }
 }
 export default CreateUserService;
