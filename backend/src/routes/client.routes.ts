@@ -1,9 +1,17 @@
 import { Router } from 'express';
+import { getRepository } from 'typeorm';
+import Client from '../model/Client';
 import CreateClientService from '../services/CreateClientService';
 
 const clientRoutes = Router();
-clientRoutes.get('/', (req, res) => {
-    return res.send();
+clientRoutes.get('/', async (req, res) => {
+    try {
+        const clientRepository = getRepository(Client);
+        const client = await clientRepository.find();
+        return res.json(client);
+    } catch (err) {
+        res.status(201).json({ error: err.message });
+    }
 });
 clientRoutes.post('/create', async (req, res) => {
     try {
@@ -14,6 +22,7 @@ clientRoutes.post('/create', async (req, res) => {
             password,
             cnpj,
             IE,
+            active,
             note,
             adress,
             city,
@@ -30,7 +39,7 @@ clientRoutes.post('/create', async (req, res) => {
             password,
             cnpj,
             IE,
-            active: true,
+            active,
             note,
             adress,
             city,

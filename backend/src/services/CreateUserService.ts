@@ -11,7 +11,7 @@ interface Require {
     notification: string;
 }
 class CreateUserService {
-    async execute({
+    public async execute({
         name,
         email,
         password,
@@ -27,9 +27,10 @@ class CreateUserService {
         const checkName = userRepository.findOne({
             where: { name },
         });
-        if (checkEmail) {
+        if (!checkEmail) {
             throw new Error('Email ja utilizado no cadastro');
-        } else if (checkName) {
+        }
+        if (!checkName) {
             throw new Error('Nome ja utilizado');
         }
         const user = userRepository.create({

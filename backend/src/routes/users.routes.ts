@@ -26,8 +26,10 @@ usersRouter.post('/create', async (req, res) => {
             avatar,
             notification,
         } = req.body;
-        const CreateUser = new CreateUserService();
-        const user = await CreateUser.execute({
+
+        const CreateClientService = new CreateUserService();
+
+        const user = await CreateClientService.execute({
             name,
             email,
             password,
@@ -36,6 +38,7 @@ usersRouter.post('/create', async (req, res) => {
             avatar,
             notification,
         });
+
         return res.json(user);
     } catch (err) {
         res.status(201).json({ error: err.message });
