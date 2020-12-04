@@ -33,6 +33,14 @@ export class CreateUserTable1606435508847 implements MigrationInterface {
                         type: 'boolean',
                     },
                     {
+                        name: 'active',
+                        type: 'boolean',
+                    },
+                    {
+                        name: 'phone',
+                        type: 'varchar',
+                    },
+                    {
                         name: 'type',
                         type: 'varchar',
                     },

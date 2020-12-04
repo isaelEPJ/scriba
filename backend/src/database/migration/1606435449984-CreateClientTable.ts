@@ -16,27 +16,22 @@ export class CreateClientTable1606435449984 implements MigrationInterface {
                     {
                         name: 'name',
                         type: 'varchar',
-                        isNullable: false,
                     },
                     {
                         name: 'surname',
                         type: 'varchar',
-                        isNullable: false,
                     },
                     {
                         name: 'email',
                         type: 'varchar',
-                        isNullable: false,
                     },
                     {
                         name: 'password',
                         type: 'varchar',
-                        isNullable: false,
                     },
                     {
                         name: 'cnpj',
                         type: 'varchar',
-                        isNullable: false,
                     },
                     {
                         name: 'IE',
@@ -45,7 +40,6 @@ export class CreateClientTable1606435449984 implements MigrationInterface {
                     {
                         name: 'active',
                         type: 'boolean',
-                        isNullable: false,
                     },
                     {
                         name: 'note',
@@ -54,22 +48,18 @@ export class CreateClientTable1606435449984 implements MigrationInterface {
                     {
                         name: 'adress',
                         type: 'varchar',
-                        isNullable: false,
                     },
                     {
                         name: 'city',
                         type: 'varchar',
-                        isNullable: false,
                     },
                     {
                         name: 'bairro',
                         type: 'varchar',
-                        isNullable: false,
                     },
                     {
                         name: 'cep',
                         type: 'varchar',
-                        isNullable: false,
                     },
                     {
                         name: 'contact',
@@ -81,12 +71,12 @@ export class CreateClientTable1606435449984 implements MigrationInterface {
                     },
                     {
                         name: 'created_at',
-                        type: 'timestamp',
+                        type: 'Timestamp',
                         default: 'now()',
                     },
                     {
                         name: 'updated_at',
-                        type: 'timestamp',
+                        type: 'Timestamp',
                         default: 'now()',
                     },
                 ],

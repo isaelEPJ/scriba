@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-Entity('client');
+@Entity('client')
 class Client {
     @PrimaryGeneratedColumn('uuid')
     id: String;
@@ -17,6 +17,8 @@ class Client {
     @Column()
     IE: string;
     @Column()
+    active: boolean;
+    @Column()
     note: string;
     @Column()
     adress: string;
@@ -30,11 +32,9 @@ class Client {
     contact: string;
     @Column()
     phone: string;
-    @Column()
-    active: boolean;
     @Column('timestamp with time zone')
     created_at: Date;
     @Column('timestamp with time zone')
-    altered_at: Date;
+    updated_at: Date;
 }
 export default Client;

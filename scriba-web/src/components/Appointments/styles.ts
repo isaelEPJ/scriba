@@ -28,10 +28,6 @@ export const Container = styled.div<ContainerProps>`
         width: 6px;
         background: ${colors.grey2};
     }
-    //::-webkit-resizer
-    //::-webkit-scrollbar-button
-    //::-webkit-scrollbar-track
-    //::-webkit-scrollbar-track-piece
     ::-webkit-scrollbar-thumb {
         width: 10px;
         background: ${colors.grey2};
@@ -73,6 +69,7 @@ export const Container = styled.div<ContainerProps>`
 
         .paper {
             max-width: 99%;
+            overflow: hidden;
         }
         border-radius: 8px;
         border: 2px solid ${colors.blue1};
@@ -105,16 +102,17 @@ export const Container = styled.div<ContainerProps>`
         .contentGrid {
             padding: 9px;
             max-height: 300px;
-            overflow-y: auto;
+            overflow-y: scroll;
             margin-bottom: 4px;
             margin-top: 2px;
+            max-height: 200px;
+
             ::-webkit-scrollbar {
                 width: 6px;
                 background: ${colors.GreyBackground};
             }
         }
         .scrollarea {
-            max-height: 200px;
         }
     }
 `;

@@ -48,13 +48,18 @@ const Tasks: React.FC = () => {
                                 <Avatar>W</Avatar>
                                 <p>owner</p>
                             </Grid>
-                            <Grid item xs zeroMinWidth className="contentGrid">
+                            <Grid>
                                 <Typography
-                                    style={{ font: '500', fontWeight: 'bold' }}
+                                    style={{
+                                        font: '500',
+                                        fontWeight: 'bold',
+                                        alignItems: 'center',
+                                        margin: '8px 0 0 2px',
+                                    }}
                                 >
                                     Controle de qualidade
                                 </Typography>
-                                <Typography className="scrollText">
+                                <Typography className="contentGrid">
                                     AS MELHORES INFORMAÇÕES SOBRE AÇÕES PARA
                                     ORIENTAR SEUS INVESTIMENTOSAS MELHORES
                                     INFORMAÇÕES SOBRE AÇÕES PARA ORIENTAR SEUS

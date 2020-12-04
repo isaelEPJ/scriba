@@ -1,12 +1,12 @@
-import React, { useCallback, useRef, useState } from "react";
-import Input from "../../components/input";
-import Button from "../../components/button";
-import logo from "../../assets/images/scriba/logo.png";
-import { Background, Container, Content } from "./styles";
-import { Form } from "@unform/web";
-import { FiArrowLeft, FiLock, FiMail, FiUser } from "react-icons/fi";
-import * as yup from "yup";
-import useStyles from "./styles";
+import React, { useCallback, useRef, useState } from 'react';
+import Input from '../../components/input';
+import Button from '../../components/button';
+import logo from '../../assets/images/scriba/logo.png';
+import { Background, Container, Content } from './styles';
+import { Form } from '@unform/web';
+import { FiArrowLeft, FiLock, FiMail, FiPhone, FiUser } from 'react-icons/fi';
+import * as yup from 'yup';
+import useStyles from './styles';
 
 import {
     NameRequiredText,
@@ -15,18 +15,18 @@ import {
     IncorrectEmailText,
     SignUpButtonText,
     GroupedSelectedText,
-} from "../../assets/strings";
-import { BackToSigInText, SignUpText } from "../../assets/strings";
-import { Link } from "react-router-dom";
-import { FormHandles } from "@unform/core";
-import getValidationErrors from "../../utils/getValidationErrors";
+} from '../../assets/strings';
+import { BackToSigInText, SignUpText } from '../../assets/strings';
+import { Link } from 'react-router-dom';
+import { FormHandles } from '@unform/core';
+import getValidationErrors from '../../utils/getValidationErrors';
 import {
     Checkbox,
     FormControl,
     FormControlLabel,
     InputLabel,
     Select,
-} from "@material-ui/core";
+} from '@material-ui/core';
 
 const SignUp: React.FC = () => {
     const FormRef = useRef<FormHandles>(null);
@@ -42,7 +42,7 @@ const SignUp: React.FC = () => {
                     .required(EmailRequiredText)
                     .email(IncorrectEmailText),
                 password: yup.string().min(6, MinPasswordRequest),
-                type: yup.string().required("selecione o tipo de Usuario"),
+                type: yup.string().required('selecione o tipo de Usuario'),
             });
             await schema.validate(data, {
                 abortEarly: false,
@@ -66,6 +66,11 @@ const SignUp: React.FC = () => {
                         placeholder="Nome de Usuario"
                     />
                     <Input name="email" icon={FiMail} placeholder="E-mail" />
+                    <Input
+                        name="name"
+                        icon={FiPhone}
+                        placeholder="Fone"
+                    />
                     <Input
                         name="password"
                         icon={FiLock}

@@ -35,17 +35,18 @@ class CreateClientService {
         phone,
     }: Request): Promise<Client> {
         const ClientRepository = getRepository(Client);
-        const CheckEmailExist = await ClientRepository.findOne({
-            where: { email },
-        });
-        const checkCNPHExist = await ClientRepository.findOne({
-            where: { cnpj },
-        });
-        if (!CheckEmailExist) {
-            throw new Error('Email já está cadastrado');
-        } else if (!checkCNPHExist) {
-            throw new Error('O CNPJ de usuario já');
-        }
+        // const CheckEmailExist = await ClientRepository.findOne({
+        //     where: { email },
+        // });
+        // const checkCNPHExist = await ClientRepository.findOne({
+        //     where: { cnpj },
+        // });
+        // if (!CheckEmailExist) {
+        //     throw new Error('Email já está cadastrado');
+        // }
+        // if (!checkCNPHExist) {
+        //     throw new Error('O CNPJ de usuario já');
+        // }
         const client = ClientRepository.create({
             name,
             surname,

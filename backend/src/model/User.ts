@@ -13,6 +13,10 @@ class User {
     @Column()
     admin: boolean;
     @Column()
+    active: boolean;
+    @Column()
+    phone: string;
+    @Column()
     type: string;
     @Column()
     avatar: string;

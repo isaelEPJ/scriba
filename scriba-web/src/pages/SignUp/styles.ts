@@ -41,7 +41,7 @@ export const Content = styled.div`
         margin-top: 14px;
         text-decoration: none;
         transition: color 0.2s;
-        margin-bottom: 30px;
+        padding-bottom: 7px;
         display: flex;
         align-items: center;
 

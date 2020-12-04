@@ -56,8 +56,8 @@ const Appointments: React.FC = () => {
                                 style={{
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    justifyContent: 'center',
                                     alignItems: 'center',
+                                    justifyContent: 'center',
                                 }}
                             >
                                 <p
@@ -84,13 +84,17 @@ const Appointments: React.FC = () => {
                                     Autor
                                 </p>
                             </Grid>
-                            <Grid item xs zeroMinWidth>
+                            <Grid>
                                 <Typography
-                                    style={{ font: '500', fontWeight: 'bold' }}
+                                    style={{
+                                        font: '500',
+                                        fontWeight: 'bold',
+                                        margin: '-6px 0 0 2px',
+                                    }}
                                 >
                                     Pedro | Fiat
                                 </Typography>
-                                <Typography className="scrollarea">
+                                <Typography className="contentGrid">
                                     É um fato conhecido de todos que um leitor
                                     se distrairá com o conteúdo de texto legível
                                     se distrairá com o conteúdo de texto legível

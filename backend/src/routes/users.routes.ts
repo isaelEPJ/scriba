@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import { getRepository } from 'typeorm';
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 import User from '../model/User';
 import CreateUserService from '../services/CreateUserService';
 
 const usersRouter = Router();
-
 // usersRouter.patch('/avatar', (req, res) => {});
 usersRouter.get('/', async (req, res) => {
     try {
@@ -22,6 +22,8 @@ usersRouter.post('/create', async (req, res) => {
             email,
             password,
             admin,
+            active,
+            phone,
             type,
             avatar,
             notification,
@@ -34,6 +36,8 @@ usersRouter.post('/create', async (req, res) => {
             email,
             password,
             admin,
+            active,
+            phone,
             type,
             avatar,
             notification,

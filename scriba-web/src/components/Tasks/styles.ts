@@ -17,6 +17,7 @@ export const Container = styled.div`
     @media (max-width: 700px) {
         min-width: 100vh;
         max-width: 50%;
+        width:530px;
         position: unset;
         display: block;
         .paper {
@@ -27,8 +28,8 @@ export const Container = styled.div`
     }
     @media (max-width: 900px) {
         margin: 5px;
+        width:730px;
         min-width: 100vh;
-        max-width: 100vh;
         max-width: 100%;
         position: unset;
         display: block;
@@ -76,36 +77,33 @@ export const Container = styled.div`
         justify-content: center;
         margin: 1.5rem 0.2rem;
         flex-direction: column;
+
     }
     .contentGrid {
             max-height: 200px;
             overflow-y: auto;
-            margin:0;
-            margin-bottom: 4px;
             margin-top: 2px;
+            max-height: 180px;
+
             ::-webkit-scrollbar {
                 width: 1px;
                 background: ${colors.GreyBackground};
             }
         }
         .scrollarea {
-            max-height: 200px;
         }
     }
     .paper {
         margin: 5px 2px;
-        padding:4px 0 0 3px;
+        padding:4px 0 4px 3px;
         border-radius: 10px;
         border: 2px solid ${colors.blue2};
         max-height: 200px;
-        ::-webkit-scrollbar {
-            width: 6px;
-            background: ${colors.grey3};
-        }
+        overflow:hidden;
         &:hover {
             transform: translateY(0.3vh);
         }
-    }
+
     .icons {
         display: flex;
         border-radius: 8px;

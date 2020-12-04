@@ -1,11 +1,13 @@
 import { getRepository } from 'typeorm';
 import User from '../model/User';
-
+import { hash } from 'bcryptjs';
 interface Require {
     name: string;
     email: string;
     password: string;
     admin: boolean;
+    active: boolean;
+    phone: string;
     type: string;
     avatar: string;
     notification: string;
@@ -16,6 +18,8 @@ class CreateUserService {
         email,
         password,
         admin,
+        active,
+        phone,
         type,
         avatar,
         notification,
@@ -33,11 +37,14 @@ class CreateUserService {
         if (!checkName) {
             throw new Error('Nome ja utilizado');
         }
+        const hashPassword = await hash(password, 8);
         const user = userRepository.create({
             name,
             email,
-            password,
+            password: hashPassword,
             admin,
+            active,
+            phone,
             type,
             avatar,
             notification,
