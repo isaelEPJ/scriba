@@ -1,13 +1,13 @@
 {
-  "type": "postgres",
-  "host": "localhost",
-  "port": 5432,
-  "username": "postgres",
-  "password": "docker",
-  "database": "trinity_db",
-  "entities": ["src/model/*.ts"],
-  "migrations": ["src/database/migration/*.ts"],
-  "cli": {
-    "migrationsDir": "src/database/migration"
-  }
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "postgres",
+    "password": "docker",
+    "database": "trinity_db",
+    "entities": ["src/model/*.ts"],
+    "migrations": ["src/database/migration/*.ts"],
+    "cli": {
+        "migrationsDir": "src/database/migration"
+    }
 }

@@ -1,39 +1,109 @@
-import { createStyles, makeStyles, Theme } from "@material-ui/core";
-import { shade } from "polished";
-import styled from "styled-components";
-import { colors } from "../../assets/colors";
+import { createStyles, makeStyles, Theme } from '@material-ui/core';
+import { shade } from 'polished';
+import styled from 'styled-components';
+import { colors } from '../../assets/colors';
 
 export const Container = styled.div`
-    background-color: ${colors.grey2};
-    width: 50vh;
+    background-color: ${colors.GreyBackground};
+    width: 60vh;
     height: 100vh;
-    position: absolute;
-    right: 0;
-    border-radius: 10px;
-    border: 2px solid ${colors.blue1};
+    right: 1px;
+    position: fixed;
+    border:0;
     margin: 2px 1px 0 0;
-    padding: 6px;
+    padding-bottom: 5rem;
     vertical-align: top;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
+    @media (max-width: 700px) {
+        min-width: 100vh;
+        max-width: 50%;
+        width:530px;
+        position: unset;
+        display: block;
+        .paper {
+            max-width: 99%;
+        }
+        border-radius: 8px;
+        border: 2px solid ${colors.blue1};
+    }
+    @media (max-width: 900px) {
+        margin: 5px;
+        width:730px;
+        min-width: 100vh;
+        max-width: 100%;
+        position: unset;
+        display: block;
+        .paper {
+            max-width: 99%;
+        }
+        border-radius: 8px;
+        border: 2px solid ${colors.blue1};
+    }
+    @media (max-width: 1200px) {
+        margin: 5px;
+        min-width: 100vh;
+        max-width: 100%;
+        position: fixed;
+        position: unset;
+        display: block;
+        .paper {
+            max-width: 99%;
+        }
+        border-radius: 8px;
+        border: 2px solid ${colors.blue1};
+    }
+    @media (max-width: 400px) {
+        min-width: 100vh;
+        max-width: 100vh;
+        width: auto;
+        position: unset;
+    }
+    ::-webkit-scrollbar {
+        width: 6px;
+        background: ${colors.grey2};
+    }
+    ::-webkit-scrollbar-thumb {
+        width: 6px;
+        background: ${colors.grey2};
+    }
     h2 {
         text-align: center;
         margin: 3px 0;
     }
     .main {
         flex-grow: 1;
-        overflow: "hidden";
-        padding: 3px;
-        border: ${colors.blue1};
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        margin: 1.5rem 0.2rem;
+        flex-direction: column;
+
+    }
+    .contentGrid {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 2px;
+            max-height: 180px;
+
+            ::-webkit-scrollbar {
+                width: 1px;
+                background: ${colors.GreyBackground};
+            }
+        }
+        .scrollarea {
+        }
     }
     .paper {
-        margin: 1rem auto;
-        padding: 6px 3px;
+        margin: 5px 2px;
+        padding:4px 0 4px 3px;
         border-radius: 10px;
         border: 2px solid ${colors.blue2};
+        max-height: 200px;
+        overflow:hidden;
         &:hover {
             transform: translateY(0.3vh);
         }
-    }
+
     .icons {
         display: flex;
         border-radius: 8px;
@@ -62,7 +132,6 @@ export const Form = styled.form`
             color: ${colors.grey3};
         }
     }
-
     button {
         width: 2rem;
         height: 2rem;
@@ -85,21 +154,20 @@ export const Form = styled.form`
         }
     }
 `;
-export const TaskGrid = styled.div``;
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         sectionDesktop: {
-            display: "none",
-            [theme.breakpoints.up("md")]: {
-                display: "flex",
+            display: 'none',
+            [theme.breakpoints.up('md')]: {
+                display: 'flex',
             },
         },
         sectionMobile: {
-            display: "flex",
-            [theme.breakpoints.up("md")]: {
-                display: "none",
+            display: 'flex',
+            [theme.breakpoints.up('md')]: {
+                display: 'none',
             },
         },
-    })
+    }),
 );
 export default useStyles;

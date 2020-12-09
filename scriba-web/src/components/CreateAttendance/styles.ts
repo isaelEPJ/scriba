@@ -1,33 +1,48 @@
-import { shade } from "polished";
-import styled from "styled-components";
-import { colors } from "../../assets/colors";
+import { shade } from 'polished';
+import styled from 'styled-components';
+import { colors } from '../../assets/colors';
 
-export const NewAttendance = styled.div`
+export const NewAttendance = styled.form`
     background-color: ${colors.white};
-    padding: 70px;
-    border-radius: 10px;
-    position: absolute; /* posição absoluta ao elemento pai, neste caso o BODY */
-    border-radius: 8px;
-    margin-top: 15px;
-    opacity: 0.9;
     border: 2px solid ${colors.blue2};
-    text-align: center;
+    border-radius: 10px;
+    opacity: 0.9;
+    margin-top: 10px;
     z-index: 2000;
     div {
-        input {
-            border-radius: 10px;
-            border: 2px solid ${colors.blue2};
-            margin: 4px;
+        svg {
+            color: red;
         }
     }
-    .formAttCli {
-        display: inline-flexbox;
+    .FormNewAtt {
+        /* display: flex; */
+        padding: 8px;
+        border: 8px;
+    }
+    .fieldCli {
+        padding: 0 20px 8px 10px;
+        border-radius: 8px;
+        width: 60%;
+        margin: 5px;
+    }
+    .headerAddAttendance {
+        margin: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        svg {
+            cursor: pointer;
+        }
     }
     .inputFormCli {
+        display: grid;
+        grid-template-columns: auto auto;
     }
     .InputContent {
-        width: 300px;
-        height: 100px;
+        display: flex;
+        margin: 0 0 0 13px;
+        width: 90%;
+        min-height: 60px;
     }
 `;
 export const Form = styled.form`
@@ -73,5 +88,21 @@ export const Form = styled.form`
                 background: ${shade(-0.4, colors.blue2)};
             }
         }
+    }
+`;
+export const Button = styled.button`
+    background: ${colors.green1};
+    color: ${colors.blue2};
+    border-radius: 6px;
+    height: auto;
+    border: 1px solid ${colors.blue2};
+    margin: 0 1rem 3px 0;
+    padding: 0 16px;
+    width: auto;
+    font-weight: 500;
+    margin-top: 2rem;
+    transition: background-color 0.2s;
+    &:hover {
+        background: ${shade(0.2, colors.green1)};
     }
 `;

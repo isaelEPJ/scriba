@@ -1,85 +1,118 @@
-import { createStyles, makeStyles, Theme } from "@material-ui/core";
-import { shade } from "polished";
-import styled from "styled-components";
-import { colors } from "../../assets/colors";
-import backgroundImage from "../../assets/images/scriba/collaboration.svg";
+import { createStyles, makeStyles, Theme } from '@material-ui/core';
+import { shade, textInputs } from 'polished';
+import styled, { css } from 'styled-components';
+import { colors } from '../../assets/colors';
+import backgroundImage from '../../assets/images/scriba/collaboration.svg';
 
-export const Container = styled.div`
+interface ContainerProps {
+    isAddSelected: boolean;
+}
+export const Container = styled.div<ContainerProps>`
     background: url(${backgroundImage}) no-repeat bottom;
-    width: 100vh;
-    min-width: 670px;
+    width: 135.5vh;
     height: 100vh;
-    position: absolute;
-    border-radius: 10px;
-    border: 2px solid ${colors.blue1};
-    right: 50vh;
-    left: 54vh;
-    margin: 2px 5px 0 0;
-    padding: 5px;
-    vertical-align: top;
+    flex-grow: 1;
+    border: 0;
+    max-width: 90%;
+    margin: 1rem 0 10rem 1rem;
+    padding-bottom: 5rem;
+    position: fixed;
     text-align: center;
     overflow-y: scroll;
-    @media only screen and (min-device-width: 900px) {
-        width: 50vh;
-        align-items: center;
-    }
+    ${(props) =>
+        props.isAddSelected &&
+        css`
+            opacity: 1;
+        `}
     ::-webkit-scrollbar {
         width: 6px;
         background: ${colors.grey2};
     }
-    //::-webkit-resizer
-    //::-webkit-scrollbar-button
-    //::-webkit-scrollbar-track
-    //::-webkit-scrollbar-track-piece
     ::-webkit-scrollbar-thumb {
-        background: ${colors.green1};
+        width: 10px;
+        background: ${colors.grey2};
     }
     //::-webkit-scrollbar-corner
+    @media (max-width: 700px) {
+        margin: 5px 0;
+        bottom: 2rem;
+        min-width: 100vh;
+        max-width: 100vh;
+        position: unset;
+        display: block;
+        .paper {
+            max-width: 99%;
+        }
+        border-radius: 8px;
+        border: 2px solid ${colors.blue1};
+    }
+    @media (max-width: 900px) {
+        margin: 5px 0;
+        min-width: 100vh;
+        max-width: 100vh;
+        max-width: 85%;
+        position: unset;
+        display: block;
+        .paper {
+            max-width: 99%;
+        }
+        border-radius: 8px;
+        border: 2px solid ${colors.blue1};
+    }
+    @media (max-width: 1200px) {
+        margin: 5px 0;
+        border: 1rem;
+        min-width: 100vh;
+        max-width: 100vh;
+        max-width: 100%;
+        position: unset;
+
+        .paper {
+            max-width: 99%;
+            overflow: hidden;
+        }
+        border-radius: 8px;
+        border: 2px solid ${colors.blue1};
+    }
+
     h2 {
         text-align: center;
         margin: 3px 0;
         position: flex;
     }
     .main {
-        display: flex;
         flex-grow: 1;
-        overflow: hidden;
-        padding: 2px;
-        margin: 20px 0 4px 4px;
-        border: ${colors.blue1};
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        margin: 2rem 0.5rem;
+        flex-direction: column;
     }
     .paper {
-        margin: 1px 2px;
-        padding: 0 0 8px 0;
+        margin: 5px 2px;
         border-radius: 10px;
         border: 2px solid ${colors.blue2};
+        max-height: 600px;
+
         &:hover {
             transform: translateY(0.5vh);
             border: 2px solid ${colors.blue2};
         }
-        .navPaper {
-            background-color: ${colors.blue2};
-            display: flex;
-            border-radius: 8px;
-            height: 25px;
-            align-items: center;
-            align-content: center;
-            .butonsNavPaper {
-                display: flex;
 
-                button {
-                    background-color: ${colors.blue2};
-                    color: ${colors.green1};
-                    border: 0;
-                    border-radius: 5px;
-                    margin: 1px 5px 1px 7px;
-                }
+        .contentGrid {
+            padding: 9px;
+            max-height: 300px;
+            overflow-y: scroll;
+            margin-bottom: 4px;
+            margin-top: 2px;
+            max-height: 200px;
+
+            ::-webkit-scrollbar {
+                width: 6px;
+                background: ${colors.GreyBackground};
             }
         }
-        .contentGrid {
-            padding: 3px 2px;
-            height: auto;
-            max-width: 600px;
+        .scrollarea {
         }
     }
 `;
@@ -87,12 +120,18 @@ export const Form = styled.form`
     margin-top: 5px;
     display: flex;
     margin: 5px 0 0 7px;
-
+    align-content: center;
+    justify-content: center;
+    > svg {
+        cursor: pointer;
+        margin-right: 0.7rem;
+        color: ${colors.blue2};
+    }
     input {
         flex: 1;
-        height: 2rem;
-        width: 3rem;
-        max-width: 500px;
+        height: 2.5rem;
+        width: 4rem;
+        max-width: 560px;
         padding: 0 10;
         border: 0;
         border-radius: 8px 0 0 8px;
@@ -105,7 +144,7 @@ export const Form = styled.form`
     button {
         display: flex;
         width: 2rem;
-        height: 2rem;
+        height: 2.5rem;
         background-color: ${colors.green1};
         color: ${colors.blue2};
         border-radius: 0 5px 5px 0;
@@ -128,14 +167,3 @@ export const Form = styled.form`
         }
     }
 `;
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        // root: {
-        //     flexGrow: 1,
-        //     overflow: "hidden",
-        //     padding: theme.spacing(1, 1),
-        //     border: colors.blue1,
-        // },
-    })
-);
-export default useStyles;

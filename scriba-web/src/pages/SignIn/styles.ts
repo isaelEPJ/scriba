@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { colors } from "../../assets/colors";
-import { shade } from "polished";
-import backgroundImage from "../../assets/images/scriba/background_image_2.jpg";
+import styled from 'styled-components';
+import { colors } from '../../assets/colors';
+import { shade } from 'polished';
+import backgroundImage from '../../assets/images/scriba/background_image_2.jpg';
 
 export const Container = styled.div`
     display: flex;
@@ -16,7 +16,7 @@ export const Content = styled.div`
     width: 100%;
     max-width: 600px;
     form {
-        margin: 60px 0;
+        margin: 20px 0;
         width: 320px;
         text-align: center;
         h1 {

@@ -1,103 +1,50 @@
-import { Avatar, Grid, Paper, Typography } from "@material-ui/core";
-import React, { useState } from "react";
-import { FiEdit, FiSearch, FiTrash } from "react-icons/fi";
-import { VscAdd } from "react-icons/vsc";
-import { AiOutlineExclamationCircle, AiOutlineLine } from "react-icons/ai";
-import { Container, Form } from "./styles";
-import { colors } from "../../assets/colors";
-import CreateAttendance from "../CreateAttendance";
+import { Avatar, Grid, Paper, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
+import { FiSearch } from 'react-icons/fi';
+import { BsFilterRight } from 'react-icons/bs';
+import { VscAdd } from 'react-icons/vsc';
+import { AiOutlineLine } from 'react-icons/ai';
+import { Container, Form } from './styles';
+import { colors } from '../../assets/colors';
+import CreateAttendance from '../CreateAttendance';
+import NavPaper from '../navPaper';
+import { AttendanceText } from '../../assets/strings';
 
 const Appointments: React.FC = () => {
     const [isAddSelected, setIsAddSelected] = useState(false);
+    const [StateForm, setStateForm] = useState(true);
+
     function handleClickNewAtt() {
         if (isAddSelected === false) {
             setIsAddSelected(true);
+            // setStateForm(false);
         } else {
             setIsAddSelected(false);
+            setStateForm(true);
         }
     }
+
     return (
         <>
-            <Container>
+            <Container isAddSelected={isAddSelected}>
                 <p>Isael</p>
-                <h2>Atendimentos</h2>
-                <Form>
-                    <input placeholder="pesquisar" />
-                    <button type="button">
-                        <FiSearch size={20} />
-                    </button>
-                    <button type="button" onClick={handleClickNewAtt}>
-                        <VscAdd size={20} />
-                    </button>
-                </Form>
+                <h2>{AttendanceText}</h2>
+                {StateForm && (
+                    <Form>
+                        <BsFilterRight size={40} />
+                        <input placeholder="pesquisar" />
+                        <button type="button">
+                            <FiSearch size={20} />
+                        </button>
+                        <button type="button" onClick={handleClickNewAtt}>
+                            <VscAdd size={20} />
+                        </button>
+                    </Form>
+                )}
                 {isAddSelected && <CreateAttendance />}
                 <div className="main">
                     <Paper className="paper">
-                        <nav className="navPaper">
-                            <FiTrash
-                                size={20}
-                                style={{
-                                    marginLeft: "12px",
-                                    color: colors.green1,
-                                    cursor: "pointer",
-                                }}
-                            />
-                            <FiEdit
-                                size={20}
-                                style={{
-                                    marginLeft: "8px",
-                                    margin: "0 5px",
-                                    color: colors.green1,
-                                    cursor: "pointer",
-                                }}
-                            />
-                            <Typography
-                                style={{
-                                    margin: "0 7px",
-                                    color: colors.green1,
-                                }}
-                            >
-                                ID:99183
-                            </Typography>
-                            <Typography
-                                style={{
-                                    margin: "0 7px",
-                                    alignContent: "center",
-                                    display: "flex",
-                                    color: colors.green1,
-                                }}
-                            >
-                                18/11/2020
-                                <AiOutlineExclamationCircle
-                                    size={11}
-                                    style={{
-                                        display: "flex",
-                                        margin: "0 7px",
-                                        color: colors.redError,
-                                    }}
-                                />
-                            </Typography>
-                            <Typography
-                                style={{
-                                    display: "flex",
-                                    margin: "0 7px",
-                                    color: colors.green1,
-                                }}
-                            >
-                                30/11/2020
-                                <AiOutlineExclamationCircle
-                                    size={11}
-                                    style={{
-                                        color: colors.redError,
-                                    }}
-                                />
-                            </Typography>
-                            <div className="butonsNavPaper">
-                                <button>Encaminhar</button>
-                                <button>Finalizar</button>
-                                <button>Detalhes</button>
-                            </div>
-                        </nav>
+                        <NavPaper />
                         <Grid
                             container
                             wrap="nowrap"
@@ -107,15 +54,15 @@ const Appointments: React.FC = () => {
                             <Grid
                                 item
                                 style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    justifyContent: "center",
-                                    alignItems: "center",
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
                                 }}
                             >
                                 <p
                                     style={{
-                                        fontSize: "13px",
+                                        fontSize: '13px',
                                         color: colors.green1,
                                     }}
                                 >
@@ -130,39 +77,62 @@ const Appointments: React.FC = () => {
                                 <Avatar>i</Avatar>
                                 <p
                                     style={{
-                                        fontSize: "13px",
+                                        fontSize: '13px',
                                         color: colors.green1,
                                     }}
                                 >
                                     Autor
                                 </p>
                             </Grid>
-                            <Grid item xs zeroMinWidth>
+                            <Grid>
                                 <Typography
-                                    style={{ font: "500", fontWeight: "bold" }}
+                                    style={{
+                                        font: '500',
+                                        fontWeight: 'bold',
+                                        margin: '-6px 0 0 2px',
+                                    }}
                                 >
                                     Pedro | Fiat
                                 </Typography>
-                                <Typography className="scrollarea">
-                                    Lorem ipsum laoreet cras bibendum eleifend
-                                    ac scelerisque lorem neque nulla interdum
-                                    condimentum, est a fermentum placerat mi
-                                    etiam platea tortor euismod fusce. conubia
-                                    sollicitudin nulla pellentesque elit nam eu
-                                    rutrum sodales, consequat sociosqu placerat
-                                    tortor ligula nostra vestibulum mauris,
-                                    curae himenaeos congue suspendisse cras
-                                    nullam dictumst. amet risus vulputate odio
-                                    convallis dapibus porta tincidunt sem
-                                    pellentesque rutrum potenti morbi porta
-                                    primis, amet at risus hendrerit ligula
-                                    turpis lacinia tempus urna ligula purus
-                                    senectus. himenaeos sem velit maecenas eget
-                                    ultricies nullam vulputate dui aliquet diam
-                                    ornare, at dapibus turpis viverra ligula
-                                    quisque ligula vulputate nisl consectetur,
-                                    lectus luctus arcu condimentum laoreet ut
-                                    molestie diam vel morbi.
+                                <Typography className="contentGrid">
+                                    É um fato conhecido de todos que um leitor
+                                    se distrairá com o conteúdo de texto legível
+                                    se distrairá com o conteúdo de texto legível
+                                    de uma página quando estiver examinando sua
+                                    diagramação. A vantagem de usar Lorem Ipsum
+                                    é que ele tem uma distribuição normal de
+                                    letras, ao contrário de "Conteúdo aqui,
+                                    conteúdo aqui", fazendo com que ele tenha
+                                    uma aparência similar a de um texto legível.
+                                    Muitos softwares de publicação e editores de
+                                    páginas na internet agora usam Lorem Ipsum
+                                    como texto-modelo padrão, e uma rápida busca
+                                    por 'lorem ipsum' mouma página quando
+                                    estiver examinando sua diagramação. A
+                                    vantagem de usar Lorem Ipsum é que ele tem
+                                    uma distribuição normal de letras, ao
+                                    contrário de "Conteúdo aqui, conteúdo aqui",
+                                    fazendo com que ele tenha uma aparência
+                                    similar a de um texto legível. Muitos
+                                    softwares de publicação e editores de
+                                    páginas na internet agora usam Lorem Ipsum
+                                    como texto-modelo padrão, e uma rápida busca
+                                    por 'lorem ipsum' mouma página quando
+                                    estiver examinando sua diagramação. A
+                                    vantagem de usar Lorem Ipsum é que ele tem
+                                    uma distribuição normal de letras, ao
+                                    contrário de "Conteúdo aqui, conteúdo aqui",
+                                    fazendo com que ele tenha uma aparência
+                                    similar a de um texto legível. Muitos
+                                    softwares de publicação e editores de
+                                    páginas na internet agora usam Lorem Ipsum
+                                    como texto-modelo padrão, e uma rápida busca
+                                    por 'lorem ipsum' mostra vários websites
+                                    ainda em sua fase de construção. Várias
+                                    versões novas surgiram ao longo dos anos,
+                                    eventualmente por acidente, e às vezes de
+                                    propósito (injetando humor, e coisas do
+                                    gênero).
                                 </Typography>
                             </Grid>
                         </Grid>

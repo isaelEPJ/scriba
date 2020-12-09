@@ -1,8 +1,9 @@
-import { Avatar, Grid, Input, Paper, Typography } from "@material-ui/core";
-import React, { useCallback, useState } from "react";
-import { FiEdit, FiSave, FiSearch, FiTrash } from "react-icons/fi";
-import { VscNewFile } from "react-icons/vsc";
-import useStyles, { Container, Form, NewTask } from "./styles";
+import { Avatar, Grid, Input, Paper, Typography } from '@material-ui/core';
+import React, { useCallback, useState } from 'react';
+import { FiEdit, FiSave, FiSearch, FiTrash } from 'react-icons/fi';
+import { VscNewFile } from 'react-icons/vsc';
+import { NotificationText } from '../../assets/strings';
+import useStyles, { Container, Form, NewTask } from './styles';
 
 const Tasks: React.FC = () => {
     const classes = useStyles();
@@ -18,7 +19,7 @@ const Tasks: React.FC = () => {
     return (
         <>
             <Container>
-                <h2>Notificaçoes</h2>
+                <h2>{NotificationText}</h2>
                 <Form>
                     <input placeholder="pesquisar" />
                     <button type="button">
@@ -47,17 +48,38 @@ const Tasks: React.FC = () => {
                                 <Avatar>W</Avatar>
                                 <p>owner</p>
                             </Grid>
-                            <Grid item xs zeroMinWidth>
+                            <Grid>
                                 <Typography
-                                    style={{ font: "500", fontWeight: "bold" }}
+                                    style={{
+                                        font: '500',
+                                        fontWeight: 'bold',
+                                        alignItems: 'center',
+                                        margin: '8px 0 0 2px',
+                                    }}
                                 >
                                     Controle de qualidade
                                 </Typography>
-                                <Typography>
+                                <Typography className="contentGrid">
                                     AS MELHORES INFORMAÇÕES SOBRE AÇÕES PARA
                                     ORIENTAR SEUS INVESTIMENTOSAS MELHORES
                                     INFORMAÇÕES SOBRE AÇÕES PARA ORIENTAR SEUS
-                                    INVESTIMENTOS
+                                    INVESTIMENTOS AS MELHORES INFORMAÇÕES SOBRE
+                                    AÇÕES PARA ORIENTAR SEUS INVESTIMENTOSAS
+                                    MELHORES INFORMAÇÕES SOBRE AÇÕES PARA
+                                    ORIENTAR SEUS INVESTIMENTOS AS MELHORES
+                                    INFORMAÇÕES SOBRE AÇÕES PARA ORIENTAR SEUS
+                                    INVESTIMENTOSAS MELHORES INFORMAÇÕES SOBRE
+                                    AÇÕES PARA ORIENTAR SEUS INVESTIMENTOS AS
+                                    MELHORES INFORMAÇÕES SOBRE AÇÕES PARA
+                                    ORIENTAR SEUS INVESTIMENTOSAS MELHORES
+                                    INFORMAÇÕES SOBRE AÇÕES PARA ORIENTAR SEUS
+                                    INVESTIMENTOS AS MELHORES INFORMAÇÕES SOBRE
+                                    AÇÕES PARA ORIENTAR SEUS INVESTIMENTOSAS
+                                    MELHORES INFORMAÇÕES SOBRE AÇÕES PARA
+                                    ORIENTAR SEUS INVESTIMENTOS AS MELHORES
+                                    INFORMAÇÕES SOBRE AÇÕES PARA ORIENTAR SEUS
+                                    INVESTIMENTOSAS MELHORES INFORMAÇÕES SOBRE
+                                    AÇÕES PARA ORIENTAR SEUS INVESTIMENTOS
                                 </Typography>
                             </Grid>
                         </Grid>
