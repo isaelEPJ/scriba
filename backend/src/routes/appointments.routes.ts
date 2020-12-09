@@ -1,10 +1,18 @@
 import { Router } from 'express';
+import { getRepository } from 'typeorm';
+import Appointment from '../model/Appointment';
 import CreateAppointmentService from '../services/CreateAppointmentService';
 
 const appointmentsRoutes = Router();
 
 appointmentsRoutes.get('/', (req, res) => {
-    return res.send();
+    try {
+        const appointmentsRepository = getRepository(Appointment);
+        const atendimentos = appointmentsRepository.find();
+        return res.json(atendimentos);
+    } catch (err) {
+        return res.status(201).json({ error: err.message });
+    }
 });
 appointmentsRoutes.post('/create', async (req, res) => {
     try {
@@ -21,6 +29,7 @@ appointmentsRoutes.post('/create', async (req, res) => {
             conclude,
             finished,
             canceled,
+            prazo,
         ] = req.body;
         const CreateAppointment = new CreateAppointmentService();
         const appointment = await CreateAppointment.execute({
@@ -36,6 +45,7 @@ appointmentsRoutes.post('/create', async (req, res) => {
             conclude: false,
             finished: false,
             canceled: false,
+            prazo,
         });
         return res.json(appointment);
     } catch (err) {

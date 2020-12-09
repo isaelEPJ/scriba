@@ -13,9 +13,10 @@ export class CreateAppointments1606989215405 implements MigrationInterface {
                 columns: [
                     {
                         name: 'id',
-                        type: 'integer',
+                        type: 'varchar',
                         isPrimary: true,
-                        generationStrategy: 'increment',
+                        generationStrategy: 'uuid',
+                        default: 'uuid_generate_v4()',
                     },
                     {
                         name: 'user_open_id',
@@ -83,6 +84,10 @@ export class CreateAppointments1606989215405 implements MigrationInterface {
                         isNullable: true,
                     },
                     {
+                        name: 'prazo',
+                        type: 'Timestamp',
+                    },
+                    {
                         name: 'created_at',
                         type: 'Timestamp',
                         default: 'now()',
@@ -95,46 +100,43 @@ export class CreateAppointments1606989215405 implements MigrationInterface {
                 ],
             }),
         );
-        await queryRunner.createForeignKey(
-            'appointments',
-            new TableForeignKey({
-                name: 'UserOpenAttendance',
-                columnNames: ['user_open_id'],
-                referencedColumnNames: ['id'],
-                referencedTableName: 'users',
-                onDelete: 'SET NULL',
-                onUpdate: 'CASCADE',
-            }),
-        );
+        // await queryRunner.createForeignKey(
+        //     'appointments',
+        //     new TableForeignKey({
+        //         name: 'UserOpenAttendance',
+        //         columnNames: ['user_open_id'],
+        //         referencedColumnNames: ['id'],
+        //         referencedTableName: 'users',
+        //         onDelete: 'SET NULL',
+        //         onUpdate: 'CASCADE',
+        //     }),
+        // );
 
-        await queryRunner.createForeignKey(
-            'appointments',
-            new TableForeignKey({
-                name: 'UserCloseAttendance',
-                columnNames: ['user_close_id'],
-                referencedColumnNames: ['id'],
-                referencedTableName: 'users',
-                onDelete: 'SET NULL',
-                onUpdate: 'CASCADE',
-            }),
-        );
-        await queryRunner.createForeignKey(
-            'appointments',
-            new TableForeignKey({
-                name: 'AttendanceClient',
-                columnNames: ['client_id'],
-                referencedColumnNames: ['id'],
-                referencedTableName: 'client',
-                onDelete: 'SET NULL',
-                onUpdate: 'CASCADE',
-            }),
-        );
+        // await queryRunner.createForeignKey(
+        //     'appointments',
+        //     new TableForeignKey({
+        //         name: 'UserCloseAttendance',
+        //         columnNames: ['user_close_id'],
+        //         referencedColumnNames: ['id'],
+        //         referencedTableName: 'users',
+        //         onDelete: 'SET NULL',
+        //         onUpdate: 'CASCADE',
+        //     }),
+        // );
+        //     await queryRunner.createForeignKey(
+        //         'appointments',
+        //         new TableForeignKey({
+        //             name: 'AttendanceClient',
+        //             columnNames: ['client_id'],
+        //             referencedColumnNames: ['id'],
+        //             referencedTableName: 'client',
+        //             onDelete: 'SET NULL',
+        //             onUpdate: 'CASCADE',
+        //         }),
+        //     );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey('appointments', 'UserOpenAttendance');
-        await queryRunner.dropForeignKey('appointments', 'UserCloseAttendance');
-        await queryRunner.dropForeignKey('appointments', 'AttendanceClient');
         await queryRunner.dropTable('appointments');
     }
 }

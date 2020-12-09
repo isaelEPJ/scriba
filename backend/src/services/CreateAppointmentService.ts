@@ -14,6 +14,7 @@ interface Request {
     conclude: boolean;
     finished: boolean;
     canceled: boolean;
+    prazo: Date;
 }
 class CreateAppointmentService {
     async execute({
@@ -29,6 +30,7 @@ class CreateAppointmentService {
         conclude,
         finished,
         canceled,
+        prazo,
     }: Request): Promise<Appointment> {
         const AppointmentsRepository = getRepository(Appointment);
         // const checkValidate = await AppointmentsRepository.findOne({
@@ -47,6 +49,7 @@ class CreateAppointmentService {
             conclude,
             finished,
             canceled,
+            prazo,
         });
         await AppointmentsRepository.save(appointment);
         return appointment;

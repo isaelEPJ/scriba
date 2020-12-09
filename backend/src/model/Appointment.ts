@@ -11,25 +11,16 @@ import User from './User';
 
 @Entity('appointments')
 class Appointment {
-    @PrimaryGeneratedColumn('increment')
-    id: number;
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
     @Column()
     user_open_id: string;
-    @ManyToMany(() => User)
-    @JoinColumn({ name: 'user_open_id' })
-    user_open: User;
     @Column()
     user_close_id: string;
-    @ManyToMany(() => User)
-    @JoinColumn({ name: 'user_close_id' })
-    user_close: User;
     @Column()
     priority: string;
     @Column()
     client_id: string;
-    @ManyToOne(() => Client)
-    @JoinColumn({ name: 'client_id' })
-    client: Client;
     @Column()
     type: string;
     @Column()
@@ -46,9 +37,11 @@ class Appointment {
     finished: boolean;
     @Column()
     canceled: boolean;
+    @Column('timestamp')
+    prazo: Date;
     @Column('timestamp with time zone')
     created_at: Date;
     @Column('timestamp with time zone')
-    altered_at: Date;
+    updated_at: Date;
 }
 export default Appointment;

@@ -49,7 +49,6 @@ const SignUp: React.FC = () => {
             });
         } catch (err) {
             const errors = getValidationErrors(err);
-
             FormRef.current?.setErrors(errors);
         }
     }, []);
@@ -66,11 +65,7 @@ const SignUp: React.FC = () => {
                         placeholder="Nome de Usuario"
                     />
                     <Input name="email" icon={FiMail} placeholder="E-mail" />
-                    <Input
-                        name="name"
-                        icon={FiPhone}
-                        placeholder="Fone"
-                    />
+                    <Input name="name" icon={FiPhone} placeholder="Fone" />
                     <Input
                         name="password"
                         icon={FiLock}
@@ -104,7 +99,9 @@ const SignUp: React.FC = () => {
                                 <option value={1}>Suporte Técninco</option>
                                 <option value={2}>Programaçao</option>
                                 <option value={3}>Certificaçao digital</option>
-                                <option value={4}>Administrativo</option>
+                                <option value={4}>
+                                    Administrativo/Financeiro
+                                </option>
                             </Select>
                         </FormControl>
                     </div>

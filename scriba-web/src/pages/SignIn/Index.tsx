@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useRef } from 'react';
 import Input from '../../components/input';
 import Button from '../../components/button';
 import logo from '../../assets/images/scriba/logo.png';
@@ -12,11 +12,36 @@ import {
 import { Link } from 'react-router-dom';
 import { FiLock, FiLogIn, FiMail } from 'react-icons/fi';
 import { Form } from '@unform/web';
+import { AuthContext } from '../../context/AuthContext';
+import { FormHandles } from '@unform/core';
+import * as yup from 'yup';
 
 const SignIn: React.FC = () => {
-    function handleSubmit(data: object) {
-        console.log(data);
-    }
+    const FormRef = useRef<FormHandles>(null);
+    const { SignIn } = useContext(AuthContext);
+
+    const handleSubmit = useCallback(
+        async (data: Object) => {
+            try {
+                const schemas = yup.object().shape({
+                    email: yup
+                        .string()
+                        .required('O email é obrigatorio')
+                        .email('o campo que voce preencheu deve ser um Email'),
+                    password: yup
+                        .string()
+                        .min(3, 'Tem que ter o minimo de 3 caracteres'),
+                });
+                await schemas.validate(data, {
+                    abortEarly: false,
+                });
+                SignIn();
+            } catch (err) {
+                console.log({ error: err.message });
+            }
+        },
+        [SignIn],
+    );
     return (
         <Container>
             <Content>
