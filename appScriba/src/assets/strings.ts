@@ -1,5 +1,3 @@
-import { string } from 'yup';
-
 //Globals
 export const AppNameText = 'Scriba';
 export const SubAppNameText = 'Guardando seus Atendimentos';
@@ -9,7 +7,7 @@ export const HandleAppText = 'Atendimentos';
 export const SignInText = 'Entrar na minha conta';
 export const SignUpText = 'Novo Usuario';
 export const SignOutText = 'Sair';
-export const CreateAccountText = 'Criar Conta';
+export const stringCreateAccountText = 'Criar Conta';
 export const forgotPasswordText = 'Esqueci minha senha';
 export const createAccountText = 'Criar conta';
 export const BackToSigInText = 'Ja sou cadastrado!';

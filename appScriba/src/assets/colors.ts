@@ -14,4 +14,5 @@ export const colors = {
     grey5: '#adacac',
     redError: '#e63946',
     redNotification: '#f44336',
+    grayDark1: '#312e38',
 };
