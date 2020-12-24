@@ -5,10 +5,10 @@ import CreateAppointmentService from '../services/CreateAppointmentService';
 
 const appointmentsRoutes = Router();
 
-appointmentsRoutes.get('/', (req, res) => {
+appointmentsRoutes.get('/', async (req, res) => {
     try {
         const appointmentsRepository = getRepository(Appointment);
-        const atendimentos = appointmentsRepository.find();
+        const atendimentos = await appointmentsRepository.find();
         return res.json(atendimentos);
     } catch (err) {
         return res.status(201).json({ error: err.message });
@@ -16,7 +16,7 @@ appointmentsRoutes.get('/', (req, res) => {
 });
 appointmentsRoutes.post('/create', async (req, res) => {
     try {
-        const [
+        const {
             user_open_id,
             user_close_id,
             priority,
@@ -30,7 +30,7 @@ appointmentsRoutes.post('/create', async (req, res) => {
             finished,
             canceled,
             prazo,
-        ] = req.body;
+        } = req.body;
         const CreateAppointment = new CreateAppointmentService();
         const appointment = await CreateAppointment.execute({
             user_open_id,
@@ -42,9 +42,9 @@ appointmentsRoutes.post('/create', async (req, res) => {
             conclusion,
             note,
             email_content,
-            conclude: false,
-            finished: false,
-            canceled: false,
+            conclude,
+            finished,
+            canceled,
             prazo,
         });
         return res.json(appointment);

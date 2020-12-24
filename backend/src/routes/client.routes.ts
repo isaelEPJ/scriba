@@ -15,7 +15,7 @@ clientRoutes.get('/', async (req, res) => {
 });
 clientRoutes.post('/create', async (req, res) => {
     try {
-        const [
+        const {
             name,
             surname,
             email,
@@ -30,7 +30,7 @@ clientRoutes.post('/create', async (req, res) => {
             cep,
             contact,
             phone,
-        ] = req.body;
+        } = req.body;
         const createClient = new CreateClientService();
         const client = await createClient.execute({
             name,

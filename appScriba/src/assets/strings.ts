@@ -5,7 +5,7 @@ export const HandleAppText = 'Atendimentos';
 
 //Textos
 export const SignInText = 'Entrar na minha conta';
-export const SignUpText = 'Novo Usuario';
+export const SignUpText = 'Crie Sua conta';
 export const SignOutText = 'Sair';
 export const stringCreateAccountText = 'Criar Conta';
 export const forgotPasswordText = 'Esqueci minha senha';
@@ -47,3 +47,8 @@ export const ClientText = 'Clientes';
 export const ForwardButtonText = 'Encaminhar';
 export const FinalizeButtonText = 'Finalizar';
 export const DetailsButtonText = 'Detalhes';
+
+//Errors
+export const ErrorLoginMessage =
+    'Ocorreu um erro ao fazer login,cheque as credenciais';
+export const ErrorAuthLoginMessage = 'Erro na autenticaçao';

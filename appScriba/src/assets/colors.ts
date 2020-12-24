@@ -12,7 +12,7 @@ export const colors = {
     grey3: '#8d99ae',
     grey4: '#7f8287',
     grey5: '#adacac',
-    redError: '#e63946',
+    redError: '#c53030',
     redNotification: '#f44336',
     grayDark1: '#312e38',
 };

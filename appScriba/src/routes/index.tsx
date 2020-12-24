@@ -18,8 +18,8 @@ const Routes: React.FC = () => (
             cardStyle: { backgroundColor: colors.GreyBackground },
         }}
     >
-        <Auth.Screen name={SignInText} component={SignIn} />
-        <Auth.Screen name={SignUpText} component={SignUp} />
+        <Auth.Screen name="SignIn" component={SignIn} />
+        <Auth.Screen name="SignUp" component={SignUp} />
     </Auth.Navigator>
 );
 export default Routes;

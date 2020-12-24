@@ -1,13 +1,4 @@
-import {
-    Column,
-    Entity,
-    JoinColumn,
-    ManyToMany,
-    ManyToOne,
-    PrimaryGeneratedColumn,
-} from 'typeorm';
-import Client from './Client';
-import User from './User';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('appointments')
 class Appointment {

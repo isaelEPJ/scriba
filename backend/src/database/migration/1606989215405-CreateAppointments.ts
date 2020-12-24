@@ -21,39 +21,30 @@ export class CreateAppointments1606989215405 implements MigrationInterface {
                     {
                         name: 'user_open_id',
                         type: 'varchar',
-                        isNullable: true,
                     },
                     {
                         name: 'user_close_id',
                         type: 'varchar',
-                        isNullable: true,
                     },
                     {
                         name: 'priority',
                         type: 'varchar',
-                        isNullable: true,
                     },
                     {
                         name: 'client_id',
                         type: 'varchar',
-                        isNullable: true,
                     },
                     {
                         name: 'type',
                         type: 'varchar',
-                        isNullable: false,
                     },
-
                     {
                         name: 'content',
                         type: 'varchar',
-                        isNullable: false,
                     },
-
                     {
                         name: 'conclusion',
                         type: 'varchar',
-                        isNullable: false,
                     },
                     {
                         name: 'note',
@@ -66,22 +57,14 @@ export class CreateAppointments1606989215405 implements MigrationInterface {
                     {
                         name: 'conclude',
                         type: 'boolean',
-                        isNullable: false,
                     },
                     {
                         name: 'finished',
                         type: 'boolean',
-                        isNullable: false,
                     },
                     {
                         name: 'canceled',
                         type: 'boolean',
-                        isNullable: false,
-                    },
-                    {
-                        name: 'period',
-                        type: 'Timestamp',
-                        isNullable: true,
                     },
                     {
                         name: 'prazo',
