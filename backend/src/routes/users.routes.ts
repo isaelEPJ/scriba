@@ -18,15 +18,15 @@ usersRouter.get('/', async (req, res) => {
 usersRouter.post('/create', async (req, res) => {
     try {
         const {
-            name,
             email,
+            name,
             password,
-            admin,
-            active,
-            phone,
-            type,
-            avatar,
-            notification,
+            admin = true,
+            active = true,
+            phone = '81 9',
+            type = 'developer',
+            avatar = 'I',
+            notification = 'usuario de teste',
         } = req.body;
 
         const CreateClientService = new CreateUserService();

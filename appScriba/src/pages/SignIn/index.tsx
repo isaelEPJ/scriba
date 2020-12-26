@@ -51,7 +51,6 @@ const SignIn: React.FC = () => {
 
     const handleSignIn = useCallback(
         async (data: SignInFormData) => {
-            console.log(data);
             try {
                 const schema = yup.object().shape({
                     email: yup
@@ -99,6 +98,7 @@ const SignIn: React.FC = () => {
                                 autoCapitalize="none"
                                 keyboardType="email-address"
                                 name="email"
+                                icon="mail"
                                 placeholder="Email"
                                 returnKeyType="next"
                                 onSubmitEditing={() => {

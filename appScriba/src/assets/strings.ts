@@ -52,3 +52,6 @@ export const DetailsButtonText = 'Detalhes';
 export const ErrorLoginMessage =
     'Ocorreu um erro ao fazer login,cheque as credenciais';
 export const ErrorAuthLoginMessage = 'Erro na autenticaçao';
+export const ErrorSignUpMessage =
+    'Ocorreu um erro no cadastro, verifique as informaçoes!';
+export const ErrorEmailExist = 'Email ja utilizado no cadastro';

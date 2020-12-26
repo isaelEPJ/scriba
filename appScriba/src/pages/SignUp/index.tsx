@@ -1,12 +1,24 @@
 import React, { useCallback, useRef } from 'react';
-import { Image, KeyboardAvoidingView, Platform, View } from 'react-native';
+import {
+    Alert,
+    Image,
+    KeyboardAvoidingView,
+    Platform,
+    View,
+} from 'react-native';
 import { BackToSignInButton, BackToSignInText, Container } from './styles';
 import logoImage from '../../assets/images/logo.png';
 import { Text } from '../SignIn/styles';
 import {
     BackToSigInText,
-    SignUpButtonText,
+    EmailRequiredText,
+    IncorrectEmailText,
+    MinPasswordRequest,
+    NameRequiredText,
+    ErrorLoginMessage,
+    ErrorSignUpMessage,
     SignUpText,
+    SignUpButtonText,
 } from '../../assets/strings';
 import Input from '../../components/Input';
 import { Button } from '../../components/Button';
@@ -16,15 +28,55 @@ import { useNavigation } from '@react-navigation/native';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/mobile';
 import { colors } from '../../assets/colors';
+import * as yup from 'yup';
+import getValidationErrors from '../../util/getValidationErrors';
+import SignIn from '../SignIn';
+import api from '../../services/api';
 
 const SignUp: React.FC = () => {
     const navigation = useNavigation();
     const formRef = useRef<FormHandles>(null);
     const emailRefInput = useRef<TextInput>(null);
     const passwordRefInput = useRef<TextInput>(null);
-    const handleSubmit = useCallback((data: Object) => {
-        console.log(data);
-    }, []);
+
+    interface SignUpFormData {
+        name: string;
+        email: string;
+        password: string;
+    }
+
+    const handleSubmit = useCallback(
+        async (data: SignUpFormData) => {
+            try {
+                formRef.current?.setErrors({});
+                const schemas = yup.object().shape({
+                    name: yup.string().required(NameRequiredText),
+                    email: yup
+                        .string()
+                        .required(EmailRequiredText)
+                        .email(IncorrectEmailText),
+                    password: yup.string().min(6, MinPasswordRequest),
+                });
+                await schemas.validate(data, {
+                    abortEarly: false,
+                });
+                console.log(data);
+
+                await api.post('/users/create', data);
+                Alert.alert('cadastro realizado com sucesso');
+                navigation.goBack();
+            } catch (err) {
+                if (err instanceof yup.ValidationError) {
+                    const errors = getValidationErrors(err);
+                    formRef.current?.setErrors(errors);
+                    return;
+                }
+                // Alert.alert(err.message);
+                Alert.alert(ErrorSignUpMessage, ErrorLoginMessage);
+            }
+        },
+        [navigation],
+    );
     return (
         <>
             <KeyboardAvoidingView
@@ -44,6 +96,7 @@ const SignUp: React.FC = () => {
                                 autoCapitalize="words"
                                 returnKeyType="next"
                                 name="name"
+                                id="name"
                                 icon="user"
                                 placeholder="Coloque aqui seu Nome"
                                 onSubmitEditing={() => {
@@ -57,6 +110,7 @@ const SignUp: React.FC = () => {
                                 returnKeyType="next"
                                 autoCorrect={false}
                                 name="email"
+                                id="email"
                                 icon="mail"
                                 placeholder="Coloque aqui seu E-mail"
                                 onSubmitEditing={() => {
@@ -67,6 +121,7 @@ const SignUp: React.FC = () => {
                                 ref={passwordRefInput}
                                 secureTextEntry
                                 name="password"
+                                id="password"
                                 icon="lock"
                                 placeholder="Digite aqui sua senha"
                                 onSubmitEditing={() =>
