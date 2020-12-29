@@ -1,7 +1,7 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 import Input from '../../components/input';
 import Button from '../../components/button';
-import logo from '../../assets/images/scriba/logo.png';
+import logo from '../../assets/images/logo.png';
 import { Background, Container, Content } from './styles';
 import { Form } from '@unform/web';
 import { FiArrowLeft, FiLock, FiMail, FiPhone, FiUser } from 'react-icons/fi';
@@ -14,19 +14,12 @@ import {
     MinPasswordRequest,
     IncorrectEmailText,
     SignUpButtonText,
-    GroupedSelectedText,
 } from '../../assets/strings';
 import { BackToSigInText, SignUpText } from '../../assets/strings';
 import { Link } from 'react-router-dom';
 import { FormHandles } from '@unform/core';
 import getValidationErrors from '../../utils/getValidationErrors';
-import {
-    Checkbox,
-    FormControl,
-    FormControlLabel,
-    InputLabel,
-    Select,
-} from '@material-ui/core';
+import api from '../../services/api';
 
 const SignUp: React.FC = () => {
     const FormRef = useRef<FormHandles>(null);
@@ -42,11 +35,13 @@ const SignUp: React.FC = () => {
                     .required(EmailRequiredText)
                     .email(IncorrectEmailText),
                 password: yup.string().min(6, MinPasswordRequest),
+                phone: yup.string().required('telefone de contato obrigatorio'),
                 type: yup.string().required('selecione o tipo de Usuario'),
             });
             await schema.validate(data, {
                 abortEarly: false,
             });
+            await api.post('/users/create', data);
         } catch (err) {
             const errors = getValidationErrors(err);
             FormRef.current?.setErrors(errors);
@@ -65,46 +60,14 @@ const SignUp: React.FC = () => {
                         placeholder="Nome de Usuario"
                     />
                     <Input name="email" icon={FiMail} placeholder="E-mail" />
-                    <Input name="name" icon={FiPhone} placeholder="Fone" />
+                    <Input name="phone" icon={FiPhone} placeholder="Fone" />
                     <Input
                         name="password"
                         icon={FiLock}
                         type="password"
                         placeholder="Senha"
                     />
-                    <div className={classes.markControl}>
-                        <FormControlLabel
-                            control={
-                                <Checkbox
-                                    color="primary"
-                                    className={classes.greenCheck}
-                                    // checked={state.checkedB}
-                                    // onChange={handleSubmit}
-                                    name="checkedB"
-                                />
-                            }
-                            label="Administrador"
-                        />
-                        <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="grouped-native-select">
-                                {GroupedSelectedText}
-                            </InputLabel>
-                            <Select
-                                color="primary"
-                                native
-                                defaultValue=""
-                                id="grouped-native-select"
-                            >
-                                <option aria-label="None" value="" />
-                                <option value={1}>Suporte Técninco</option>
-                                <option value={2}>Programaçao</option>
-                                <option value={3}>Certificaçao digital</option>
-                                <option value={4}>
-                                    Administrativo/Financeiro
-                                </option>
-                            </Select>
-                        </FormControl>
-                    </div>
+
                     <Button type="submit">{SignUpButtonText}</Button>
                 </Form>
                 <Link to="/">

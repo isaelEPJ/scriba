@@ -23,7 +23,7 @@ usersRouter.post('/create', async (req, res) => {
             password,
             admin = true,
             active = true,
-            phone = '81 9',
+            phone,
             type = 'developer',
             avatar = 'I',
             notification = 'usuario de teste',

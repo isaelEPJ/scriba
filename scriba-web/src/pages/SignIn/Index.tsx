@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useRef } from 'react';
 import Input from '../../components/input';
 import Button from '../../components/button';
-import logo from '../../assets/images/scriba/logo.png';
+import logo from '../../assets/images/logo.png';
 import { Background, Container, Content } from './styles';
 import {
     CreateAccountText,
@@ -15,6 +15,7 @@ import { Form } from '@unform/web';
 import { AuthContext } from '../../context/AuthContext';
 import { FormHandles } from '@unform/core';
 import * as yup from 'yup';
+import getValidationErrors from '../../utils/getValidationErrors';
 
 const SignIn: React.FC = () => {
     const FormRef = useRef<FormHandles>(null);
@@ -23,6 +24,7 @@ const SignIn: React.FC = () => {
     const handleSubmit = useCallback(
         async (data: Object) => {
             try {
+                FormRef.current?.setErrors({});
                 const schemas = yup.object().shape({
                     email: yup
                         .string()
@@ -37,7 +39,8 @@ const SignIn: React.FC = () => {
                 });
                 SignIn();
             } catch (err) {
-                console.log({ error: err.message });
+                const errors = getValidationErrors(err);
+                FormRef.current?.setErrors(errors);
             }
         },
         [SignIn],
@@ -46,7 +49,7 @@ const SignIn: React.FC = () => {
         <Container>
             <Content>
                 <img src={logo} alt="logo" />
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} ref={FormRef}>
                     <h1>{SignInText}</h1>
                     <Input
                         name="email"
@@ -59,7 +62,7 @@ const SignIn: React.FC = () => {
                         type="password"
                         placeholder="Senha"
                     />
-                    <Button>{SignInButtonText}</Button>
+                    <Button type="submit">{SignInButtonText}</Button>
                     <a href="#">{forgotPasswordText}</a>
                 </Form>
                 <Link to="/cadastro">

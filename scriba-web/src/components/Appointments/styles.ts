@@ -2,7 +2,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core';
 import { shade, textInputs } from 'polished';
 import styled, { css } from 'styled-components';
 import { colors } from '../../assets/colors';
-import backgroundImage from '../../assets/images/scriba/collaboration.svg';
+import backgroundImage from '../../assets/images/collaboration.svg';
 
 interface ContainerProps {
     isAddSelected: boolean;

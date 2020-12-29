@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../assets/colors';
 import { shade } from 'polished';
-import backgroundImage from '../../assets/images/scriba/background_image_2.jpg';
+import backgroundImage from '../../assets/images/background_image_2.jpg';
 
 export const Container = styled.div`
     display: flex;

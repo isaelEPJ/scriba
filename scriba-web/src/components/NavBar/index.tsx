@@ -11,7 +11,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import useStyles from './styles';
-import logo from '../../assets/images/scriba/logoInverted.png';
+import logo from '../../assets/images/logoInverted.png';
 import {
     ProfileText,
     MyaccountText,

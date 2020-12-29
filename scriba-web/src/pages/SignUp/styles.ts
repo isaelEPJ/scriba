@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { colors } from "../../assets/colors";
-import { shade } from "polished";
-import backgroundImage from "../../assets/images/scriba/mesa_work.jpg";
-import { createStyles, makeStyles, Theme } from "@material-ui/core";
+import styled from 'styled-components';
+import { colors } from '../../assets/colors';
+import { shade } from 'polished';
+import backgroundImage from '../../assets/images/mesa_work.jpg';
+import { createStyles, makeStyles, Theme } from '@material-ui/core';
 
 export const Container = styled.div`
     display: flex;
@@ -63,14 +63,14 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         markControl: {
             color: colors.blue1,
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "nowrap",
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'nowrap',
             msTransformOrigin: colors.green1,
         },
         formControl: {
             margin: theme.spacing(1),
-            display: "flex",
+            display: 'flex',
         },
 
         greenCheck: {
@@ -78,6 +78,6 @@ const useStyles = makeStyles((theme: Theme) =>
             // flexGrow: 1,
             // flexDirection: "column",
         },
-    })
+    }),
 );
 export default useStyles;
