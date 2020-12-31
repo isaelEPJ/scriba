@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import { getRepository } from 'typeorm';
-import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 import User from '../model/User';
 import CreateUserService from '../services/CreateUserService';
 
@@ -23,7 +22,7 @@ usersRouter.post('/create', async (req, res) => {
             password,
             admin = true,
             active = true,
-            phone,
+            phone = '819 99999999',
             type = 'developer',
             avatar = 'I',
             notification = 'usuario de teste',

@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useContext } from 'react';
 import Input from '../../components/input';
 import Button from '../../components/button';
 import logo from '../../assets/images/logo.png';
@@ -6,7 +6,6 @@ import { Background, Container, Content } from './styles';
 import { Form } from '@unform/web';
 import { FiArrowLeft, FiLock, FiMail, FiPhone, FiUser } from 'react-icons/fi';
 import * as yup from 'yup';
-import useStyles from './styles';
 
 import {
     NameRequiredText,
@@ -23,7 +22,6 @@ import api from '../../services/api';
 
 const SignUp: React.FC = () => {
     const FormRef = useRef<FormHandles>(null);
-    const classes = useStyles();
     const handleSubmit = useCallback(async (data: object) => {
         try {
             FormRef.current?.setErrors({});
@@ -36,12 +34,13 @@ const SignUp: React.FC = () => {
                     .email(IncorrectEmailText),
                 password: yup.string().min(6, MinPasswordRequest),
                 phone: yup.string().required('telefone de contato obrigatorio'),
-                type: yup.string().required('selecione o tipo de Usuario'),
             });
             await schema.validate(data, {
                 abortEarly: false,
             });
             await api.post('/users/create', data);
+            alert('usuario cadastrado');
+            FormRef.current?.reset();
         } catch (err) {
             const errors = getValidationErrors(err);
             FormRef.current?.setErrors(errors);

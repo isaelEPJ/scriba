@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { getRepository } from 'typeorm';
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 import Appointment from '../model/Appointment';
 import CreateAppointmentService from '../services/CreateAppointmentService';
 
