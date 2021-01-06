@@ -19,6 +19,7 @@ import {
     ErrorSignUpMessage,
     SignUpText,
     SignUpButtonText,
+    ErrorAuthLoginMessage,
 } from '../../assets/strings';
 import Input from '../../components/Input';
 import { Button } from '../../components/Button';
@@ -72,7 +73,7 @@ const SignUp: React.FC = () => {
                     return;
                 }
                 // Alert.alert(err.message);
-                Alert.alert(ErrorSignUpMessage, ErrorLoginMessage);
+                Alert.alert(ErrorAuthLoginMessage, ErrorSignUpMessage);
             }
         },
         [navigation],

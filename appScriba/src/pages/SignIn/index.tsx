@@ -26,6 +26,7 @@ import {
     stringCreateAccountText,
     ErrorLoginMessage,
     ErrorAuthLoginMessage,
+    NameRequiredText,
 } from '../../assets/strings';
 import { Button } from '../../components/Button';
 import Input from '../../components/Input';
@@ -37,12 +38,16 @@ import { TextInput } from 'react-native-gesture-handler';
 import { colors } from '../../assets/colors';
 import * as yup from 'yup';
 import getValidationErrors from '../../util/getValidationErrors';
+import { useAuth } from '../../hooks/Auth';
+import api from '../../services/api';
 
 const SignIn: React.FC = () => {
     const navigation = useNavigation();
     const formRef = useRef<FormHandles>(null);
     const passwordRefInput = useRef<TextInput>(null);
     const emailRefInput = useRef<TextInput>(null);
+
+    const { SignIn, user } = useAuth();
 
     interface SignInFormData {
         email: string;
@@ -60,6 +65,14 @@ const SignIn: React.FC = () => {
                     password: yup.string().min(6, MinPasswordRequest),
                 });
                 await schema.validate(data, { abortEarly: false });
+
+                await SignIn({
+                    email: data.email,
+                    password: data.password,
+                });
+                Alert.alert('seja bem vindo');
+                console.log(user);
+                formRef.current?.clearField;
             } catch (err) {
                 if (err instanceof yup.ValidationError) {
                     const errors = getValidationErrors(err);
@@ -69,8 +82,9 @@ const SignIn: React.FC = () => {
                 Alert.alert(ErrorAuthLoginMessage, ErrorLoginMessage);
             }
         },
-        [SignIn, Alert],
+        [SignIn],
     );
+
     return (
         <>
             <KeyboardAvoidingView
